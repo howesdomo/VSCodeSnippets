@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>taskhandler</Title>
+			<Shortcut>taskhandler</Shortcut>
+			<Description>Task Handlerandler</Description>
+			<Author>Microsoft Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>要计算的表达式</ToolTip>
+					<Default>true</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[void $selected$my_Handler$end$(System.Threading.Tasks.Task task)
+        {
+            if (task.IsFaulted == true)
+            {
+                if (task.Exception != null)
+                {
+                    Console.WriteLine(task.IsFaulted);
+                    WPFMessageBox.Show(task.Exception.GetFullInfo());
+                }
+                else
+                {
+                    WPFMessageBox.Show("errorMsg");
+                }
+            }
+            else
+            {
+                WPFMessageBox.Show("successMsg");
+            }
+        }]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
