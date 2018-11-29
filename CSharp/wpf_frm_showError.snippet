@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>wpf_frm_showError</Title>
+			<Shortcut>wpf_frm_showError</Shortcut>
+			<Description>WPF Form MessageBox ShowError</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>WPF Form MessageBox ShowError</ToolTip>
+					<Default>true</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[string errorMsg = "{0}".FormatWith();
+			WPFMessageBox.MessageBox.ShowError(owner: this, message: errorMsg);]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
