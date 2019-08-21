@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>backgroundWorker</Title>
+			<Shortcut>backgroundWorker</Shortcut>
+			<Description>Create BackgroundWorker</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>Create BackgroundWorker</ToolTip>
+					<Default>true</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[System.ComponentModel.BackgroundWorker mBgWorker { get; set; }
+
+
+            
+            if (mBgWorker != null && mBgWorker.IsBusy == true)
+            {
+                return;
+            }
+
+            mBgWorker = new System.ComponentModel.BackgroundWorker();
+            mBgWorker.DoWork += (bgSender, bgArgs) =>
+            {
+
+            };
+
+            mBgWorker.RunWorkerCompleted += (bgSender, bgResult) =>
+            {
+                if (bgResult.Error != null)
+                {
+
+                }
+                else
+                {
+
+                }
+            };
+
+            mBgWorker.WorkerReportsProgress = true;
+            mBgWorker.ProgressChanged += (bgSender, bgArgs) =>
+            {
+
+            };
+
+            mBgWorker.RunWorkerAsync(new object[] { });]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

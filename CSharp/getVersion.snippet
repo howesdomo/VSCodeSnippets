@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
-	<CodeSnippet Format="1.0.1">
+	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>debugWriteLine</Title>
-			<Shortcut>debugWriteLine</Shortcut>
-			<Description>Debug Write Line</Description>
+			<Title>getVersion</Title>
+			<Shortcut>getVersion</Shortcut>
+			<Description>Get ExecutingAssembly Version</Description>
 			<Author>Howe</Author>
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
@@ -15,12 +15,11 @@
 			<Declarations>
 				<Literal>
 					<ID>expression</ID>
-					<ToolTip>Debug Write Line</ToolTip>
+					<ToolTip>Get ExecutingAssembly Version</ToolTip>
 					<Default>true</Default>
 				</Literal>
 			</Declarations>
-			<Code Language="csharp"><![CDATA[string msg = $"{0}";
-                System.Diagnostics.Debug.WriteLine(msg);]]>
+			<Code Language="csharp"><![CDATA[System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()]]>
 			</Code>
 		</Snippet>
 	</CodeSnippet>
