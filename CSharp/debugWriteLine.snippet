@@ -18,9 +18,14 @@
 					<ToolTip>Debug Write Line</ToolTip>
 					<Default>true</Default>
 				</Literal>
+				
+				<Literal Editable="false">
+				  <ID>Dolores</ID>
+				  <Default>$</Default>
+				</Literal>
 			</Declarations>
-			<Code Language="csharp"><![CDATA[string msg = $"{0}";
-                System.Diagnostics.Debug.WriteLine(msg);]]>
+			<Code Language="csharp">string msg = $Dolores$"{0}";
+System.Diagnostics.Debug.WriteLine(msg);
 			</Code>
 		</Snippet>
 	</CodeSnippet>
