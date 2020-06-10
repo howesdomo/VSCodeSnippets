@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>appThrottleAction</Title>
+			<Shortcut>appThrottleAction</Shortcut>
+			<Description>防止同一时间内多次调用(Xamarin)</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>防止同一时间内多次调用(Xamarin)</ToolTip>
+					<Default>true</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[
+			App.ThrottleAction.Throttle
+			(
+				interval: App.ActionIntervalDefault,
+				action: async () =>
+				{
+					await Navigation.PushAsync(new XXXPage());
+				},
+				syncInvoke: null
+			);]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
