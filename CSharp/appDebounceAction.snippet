@@ -2,9 +2,9 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
 	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>appThrottleAction</Title>
-			<Shortcut>appThrottleAction</Shortcut>
-			<Description>防止同一时间内多次调用(Xamarin)</Description>
+			<Title>appDebounceAction</Title>
+			<Shortcut>appDebounceAction</Shortcut>
+			<Description>延迟x毫秒后执行,若同一方法在x毫秒内再次被执行, 则重新计时(Xamarin)</Description>
 			<Author>Howe</Author>
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
@@ -15,12 +15,12 @@
 			<Declarations>
 				<Literal>
 					<ID>expression</ID>
-					<ToolTip>防止同一时间内多次调用(Xamarin)</ToolTip>
+					<ToolTip>延迟x毫秒后执行,若同一方法在x毫秒内再次被执行, 则重新计时(Xamarin)</ToolTip>
 					<Default>true</Default>
 				</Literal>
 			</Declarations>
 			<Code Language="csharp"><![CDATA[
-			App.ThrottleAction.Throttle
+			App.DebounceAction.Debounce
 			(
 				interval: App.ActionIntervalDefault,
 				action: async () =>
