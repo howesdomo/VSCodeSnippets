@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>ctxTran</Title>
+			<Shortcut>ctxTran</Shortcut>
+			<Description>ctxTran</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[using (var ctx = new MyDataContext(_TODO_SQLConnStr_))
+	{
+		ctx.Connection.Open();
+		using (var tran = ctx.Connection.BeginTransaction())
+		{
+			try
+			{
+				ctx.Transaction = tran; // 关键代码, 若缺少会报 [SqlConnection 不支持并行事务] 错误
+
+				// ********** Start of 数据库脚本 **********
+				// 执行 ctx 增删改
+				ctx.TableA.InsertOnSubmit(new TableA() { });
+				ctx.SubmitChanges();
+
+
+				// 执行 Util.DBHelper.GetDataSet 增删改
+				DataTable dt = new DataTable();
+				dt.Columns.Add("Id");
+
+				var dr = dt.NewRow();
+				dt.Rows.Add(dr);
+				dr["Id"] = "";
+
+				List<object> args = new List<object>()
+				{
+					new System.Data.SqlClient.SqlParameter("@l", dt)
+				};
+
+				var ds = Util.DBHelper.GetDataSet(tran, "_TODO_Proc_", args, System.Data.CommandType.StoredProcedure);
+
+				// ********** End of 数据库脚本 **********
+
+				tran.Commit();
+				}
+				catch (Exception ex)
+				{
+					tran.Rollback();
+					throw ex;
+				}
+			}
+		}]]></Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

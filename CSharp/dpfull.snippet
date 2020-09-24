@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>dpfull</Title>
+			<Shortcut>dpfull</Shortcut>
+			<Description>DependencyProperty init</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>propertyName</ID>
+					<ToolTip>Property Name</ToolTip>
+					<Default>TODO_Name</Default>
+				</Literal>
+				<Literal>
+					<ID>propertyType</ID>
+					<ToolTip>Property Type</ToolTip>
+					<Default>object</Default>
+				</Literal>
+				<Literal Editable="false">
+					<ID>classname</ID>
+					<ToolTip>Class name</ToolTip>
+					<Function>ClassName()</Function>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[
+	public static readonly DependencyProperty $propertyName$Property = DependencyProperty.Register
+	(
+		name: "$propertyName$",
+		propertyType: typeof($propertyType$),
+		ownerType: typeof($classname$),
+		validateValueCallback: null, // new ValidateValueCallback((toValidate) => { return true; }),
+		typeMetadata: new PropertyMetadata
+		(
+			defaultValue: null,
+			propertyChangedCallback: on$propertyName$_PropertyChangedCallback,
+			coerceValueCallback: null
+		)
+	);
+	
+	public $propertyType$ $propertyName$
+	{
+		get { return ($propertyType$)GetValue($propertyName$Property); }
+		set { SetValue($propertyName$Property, value); }
+	}
+	
+	public static void on$propertyName$_PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+	{
+		if ((d is $classname$) == false) { return; }
+		var target = d as $classname$;
+		// TODO 其他逻辑
+	}
+	
+	$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

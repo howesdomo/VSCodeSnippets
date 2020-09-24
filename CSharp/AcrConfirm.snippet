@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Acr.UserDialog Confirm</Title>
+			<Shortcut>AcrConfirm</Shortcut>
+			<Description>Acr.UserDialog Confirm</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>Acr.UserDialog Confirm</ToolTip>
+					<Default>true</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[bool r = await Acr.UserDialogs.UserDialogs.Instance.ConfirmAsync(new Acr.UserDialogs.ConfirmConfig()
+{
+	Title = "",
+	Message = "",
+	OkText = "",
+	CancelText = ""
+});]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

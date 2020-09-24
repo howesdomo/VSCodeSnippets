@@ -2,9 +2,9 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
 	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>getdataset</Title>
-			<Shortcut>getdataset</Shortcut>
-			<Description>Get DataSet By SQL</Description>
+			<Title>SQLServer GetDataSet</Title>
+			<Shortcut>SQLServer_GetDataSet</Shortcut>
+			<Description>SQLServer GetDataSet</Description>
 			<Author>Howe</Author>
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
@@ -15,11 +15,12 @@
 			<Declarations>
 				<Literal>
 					<ID>expression</ID>
-					<ToolTip>Get DataSet By SQL</ToolTip>
+					<ToolTip>SQLServer GetDataSet</ToolTip>
 					<Default>true</Default>
 				</Literal>
 			</Declarations>
-			<Code Language="csharp"><![CDATA[var ds = Util.DBHelper.GetDataSet(
+			<Code Language="csharp"><![CDATA[var ds = Util.DBHelper_SQLServer.GetDataSet
+				(
 					connectionString: EML.Util.SQLHelper.LogisticsConnString,
 					argCommandType: CommandType.StoredProcedure,
 					commandText: "填写储存过程", 
@@ -28,7 +29,7 @@
 						new System.Data.SqlClient.SqlParameter("", value),
 					},
 					isRollbackForTest: false // 测试保存时开启
-                );]]>
+				);]]>
 			</Code>
 		</Snippet>
 	</CodeSnippet>
