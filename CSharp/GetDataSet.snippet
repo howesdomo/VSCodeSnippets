@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>SQL数据库通用GetDataSet</Title>
+			<Shortcut>GetDataSet</Shortcut>
+			<Description>GetDataSet</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>GetDataSet</ToolTip>
+					<Default>true</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[var ds = Util.DBHelper.GetDataSet
+			(
+				factory: Util.DBHelper.GetDbProviderFactory(Util.DbProvider.SQLServer),
+				connectionString: EML.Util.SQLHelper.LogisticsConnString,
+				argCommandType: System.Data.CommandType.StoredProcedure,
+				commandText: "填写储存过程 或 SQL脚本",
+				paramsList: new List<System.Data.SqlClient.SqlParameter>()
+				{
+					new System.Data.SqlClient.SqlParameter("", value),
+				},
+				isBeginTransaction: false,
+				isRollbackForTest: false
+			);]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

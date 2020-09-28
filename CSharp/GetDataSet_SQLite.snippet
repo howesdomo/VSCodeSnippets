@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>GetDataSet SQLite</Title>
+			<Shortcut>GetDataSet_SQLite</Shortcut>
+			<Description>GetDataSet SQLite</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>GetDataSet SQLite</ToolTip>
+					<Default>true</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[var ds = Util.DBHelper.GetDataSet
+			(
+				factory: Util.DBHelper.GetDbProviderFactory(Util.DbProvider.SQLite),
+				connectionString: ConnStr,
+				argCommandType: System.Data.CommandType.Text,
+				commandText: "填写SQL脚本",
+				paramsList: null,
+				isBeginTransaction: true, // SQLite 推荐开启事务进行 CUD 操作
+				isRollbackForTest: false
+			);]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

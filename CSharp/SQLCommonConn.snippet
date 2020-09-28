@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>SQL Common Connection</Title>
+			<Shortcut>SQLCommonConn</Shortcut>
+			<Description>SQL Common Connection</Description>
+			<Author>Howe</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[var factory = Util.DBHelper.GetDbProviderFactory(Util.DbProvider.SQLServer);
+
+				using (System.Data.Common.DbConnection conn = factory.CreateConnection())
+				{
+					conn.ConnectionString = connectionString;
+					conn.Open();
+					System.Data.Common.DbCommand cmd = null;
+					using (System.Data.Common.DbTransaction tran = conn.BeginTransaction())
+					{
+						try
+						{
+							cmd = tran.Connection.CreateCommand();
+							cmd.Transaction = tran;
+				
+							// ********** Start of 数据库脚本 **********
+				
+							var ds = Util.DBHelper.GetDataSet
+							(
+								tran: tran,
+								argCommandType : System.Data.CommandType.StoredProcedure,
+								commandText: "填写储存过程 或 SQL脚本",
+								paramsList: new List<System.Data.SqlClient.SqlParameter>()
+								{
+									new System.Data.SqlClient.SqlParameter("", value),
+								}
+							);
+				
+							// ********** End of 数据库脚本 **********
+				
+							bool isTest = true;
+							if (isTest)
+							{
+								tran.Rollback();
+							}
+							else
+							{
+								tran.Commit();
+							}
+						}
+						catch (Exception ex)
+						{
+							tran.Rollback();
+							throw ex;
+						}
+					}
+				}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
