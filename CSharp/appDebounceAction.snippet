@@ -23,12 +23,12 @@
 			App.DebounceAction.Debounce
 			(
 				interval: App.ActionIntervalDefault,
-				action: async () =>
+				action: () =>
 				{
-					await Navigation.PushAsync(new XXXPage());
+					Device.BeginInvokeOnMainThread(async () => { });
 				},
 				syncInvoke: null // winform / xamarin.forms
-				//, dispatcher: null // wpf
+								//, dispatcher: null // wpf
 			);]]>
 			</Code>
 		</Snippet>

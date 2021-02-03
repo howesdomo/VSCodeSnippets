@@ -2,9 +2,9 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
 	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>baseViewModel</Title>
-			<Shortcut>baseViewModel</Shortcut>
-			<Description>BaseViewModel</Description>
+			<Title>baseViewModelFramework4</Title>
+			<Shortcut>baseViewModelFramework4</Shortcut>
+			<Description>baseViewModelFramework4</Description>
 			<Author>Howe</Author>
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
@@ -25,14 +25,8 @@
 				</Literal>
 			</Declarations>
 			<Code Language="csharp"><![CDATA[/// <summary>
-	/// 1.0.3 - 2021-02-03 12:11:01
-    /// 附加上命名空间方便程序员直接调用
-	///
-	/// 1.0.2 - 2019-10-28 10:36:44
-    /// 整合 NotifyPropertyChanged 到 OnPropertyChanged
-    /// 
-    /// 1.0.1 - 2019-9-26 15:46:09
-    /// 增加 NotifyPropertyChanged 方法
+    /// 1.0.0 - 2021-02-03 12:11:01
+    /// 由 baseViewModel中 拷贝出一份副本供给 .net framework 4.0 使用
     /// </summary>
     public class BaseViewModel : System.ComponentModel.INotifyPropertyChanged
     {
@@ -40,7 +34,7 @@
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+        protected virtual void OnPropertyChanged(string propertyName = "")
         {
             this.PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
         }

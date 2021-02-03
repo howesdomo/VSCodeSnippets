@@ -25,11 +25,12 @@
 				interval: App.ActionIntervalDefault,
 				action: () =>
 				{
-					Navigation.PushAsync(new XXXPage());
+					Device.BeginInvokeOnMainThread(() => { });
 				},
 				syncInvoke: null // winform / xamarin.forms
-				//, dispatcher: null // wpf
-			);]]>
+								//, dispatcher: null // wpf
+			);
+			]]>
 			</Code>
 		</Snippet>
 	</CodeSnippet>
